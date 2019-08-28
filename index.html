@@ -10,10 +10,11 @@
     background:#d5dade;
   }
   #header{
-    background-color:#22a0e3;
+    background-color:#046ad1;
     margin-bottom:10px;
     font-family:Impact, Charcoal, sans-serif;
     color:white;
+    box-shadow:1px 0px 2px blue;
   }
   #broker{
     background-color: azure;
@@ -28,7 +29,11 @@
   h6{
     margin-top:10px;
   }
-
+  h1{
+    margin-top:7px;
+    background:#046ad1;
+    border:1px solid white;
+  }
   input{
     background-color:none;
     border:none;
@@ -48,29 +53,47 @@
     background-color:azure;
     margin-bottom:10px;
     padding-bottom:15px;
+    box-shadow: 0px 0px 2px navy;
+    border-radius: 5px;
   }
   #message{
     background-color:azure;
     overflow-y: scroll;
-    height:99%;
+    height:773px;
   }
   .divHeader{
     background-color:#22a0e3;
+    padding-top:5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius:5px;
+  }
+  ::-webkit-input-placeholder {
+   font-style: italic;
+  }
+  :-moz-placeholder {
+    font-style: italic;  
+  }
+  ::-moz-placeholder {
+    font-style: italic;  
+  }
+  :-ms-input-placeholder {  
+    font-style: italic; 
   }
 </style>
+
 <body>
   <div id="header" class="row">
     <div class="col-md-12">
-      <h1>MQTT over Web Socket</h1>
+      <h1>&nbsp;&nbsp;&nbsp;MQTT over Web Socket</h1>
     </div>
   </div>
   <div class="container">
     <div class="row">
       <div class="col-md-6">
         <div class="row">
-          <div id="broker" class="col-md-12">
+          <div id="broker" class="connect col-md-12">
             <div class="row">
-              <div id="brokerHeader"class="col-md-12">
+              <div id="brokerHeader" class="divHeader col-md-12">
                 <h5>Broker</h5>
               </div>
             </div>
@@ -110,7 +133,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div id="message" class="overflow-y">
+        <div id="message">
           <div class="row">
             <div class="divHeader col-md-12">
               <h5>&nbsp;&nbsp;&nbsp;Incoming messages</h5>

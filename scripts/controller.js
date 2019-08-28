@@ -8,26 +8,27 @@ var publishTopic = document.getElementById('publishTopic');
 var publishBtn = document.getElementById('btnPublish');
 var subscribeBtn = document.getElementById('btnSubscribe');
 var unsubscribeBtn = document.getElementById('btnUnsubscribe');
+var Status = document.getElementById('status');
+let connectionCheck = 0;
 
 connect.addEventListener('click', function (prevent) {
   prevent.preventDefault();
+  connectionCheck = 1;
   client = mqtt.connect(address.value)
 
   subscribeBtn.addEventListener('click', function (prevent) {
     prevent.preventDefault();
-
     client.subscribe("mqtt/" + subscribe.value)
   });
 
   unsubscribeBtn.addEventListener('click',function(prevent){
     prevent.preventDefault();
-
     client.unsubscribe("mqtt/" + subscribe.value);
   });
 
   client.on("connect", function () {
-    var status = document.getElementById('status');
-    status.innerHTML = "Connected Successfully!";
+    Status.innerHTML = "Connected Successfully!";
+    Status.style.color="green";
   });
 
   client.on("message", function (topic, payload) {
@@ -49,13 +50,18 @@ connect.addEventListener('click', function (prevent) {
 
   publishBtn.addEventListener('click', function (prevent) {
     prevent.preventDefault();
-
-    client.publish("mqtt/" + publishTopic.value, message.value);
+    if(connectionCheck==1){
+      client.publish("mqtt/" + publishTopic.value, message.value);
+    }else{
+      Status.innerHTML = "Oops! You are not Connected...";
+      Status.style.color="red";
+    }
   })
 
   disconnect.addEventListener('click', function () {
-    var status = document.getElementById('status');
-    status.innerHTML = "Disconnected!";
+    connectionCheck = 0;
+    Status.innerHTML = "Disconnected!";
+    Status.style.color="red";
     client.end();
   });
 
