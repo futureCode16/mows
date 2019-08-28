@@ -1,11 +1,86 @@
 <html>
+
 <head>
   <title>mows</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
 </head>
-<body>
-  <h1>MQTT</h1>
-  <p>My MQTT Web App</p>
+
+<body style="background:#d5dade;">
+  <div class="container">
+    <h1>MQTT over Web Socket</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div id="broker" class="col-md-12" style="background-color: azure;margin-bottom:10px;">
+            <div class="row">
+              <div class="col-md-12" style="background-color:steelblue">
+                <h6 style="color:white">Broker</h6>
+              </div>
+            </div>
+            <br>
+            <h6>Address:</h6>
+            <input id="address" type="text" style="background-color:none;border:none;border-bottom: 1px solid black;
+            width:100%;margin-bottom: 10px;height:40px;" placeholder="Broker Address" value="ws://broker.hivemq.com:8000/mqtt">
+            <button id="btnConnect" class="btn-primary" type="button" name="connect">Connect</button>
+            <button id="btnDisconnect" class="btn-primary" type="button" name="Disconnect">Disconnect</button>
+            <h6 style="margin-top:10px;">Status:</h6>
+            <p id="status" style="background:white;padding-top:5px;padding-bottom:5px;padding-left:5px;"><i>status</i></p>
+          </div>
+          <div class="col-md-12" style="background-color:azure;margin-bottom:10px;padding-bottom:15px;">
+            <div class="row">
+              <div class="col-md-12" style="background-color:steelblue">
+                <h6 style="color:white">Publish</h6>
+              </div>
+            </div>
+            <br>
+            <h6>Topic:</h6>
+            <input id="publishTopic" type="text" style="background-color:none;border:none;border-bottom: 1px solid black;
+                width:100%;margin-bottom: 10px;height:40px;" placeholder="Publish Topic">
+            <h6 style="margin-top:10px;">Payload:</h6>
+            <input id="payload" type="text" style="background-color:none;border:none;border-bottom: 1px solid black;
+                width:100%;margin-bottom: 10px;height:40px;" placeholder="Message">
+            <button id="btnPublish" class="btn-primary" type="button" name="publish">Publish</button>
+          </div>
+          <div class="col-md-12" style="background-color:azure;padding-bottom:15px;">
+            <div class="row">
+              <div class="col-md-12" style="background-color:steelblue">
+                <h6 style="color:white">Subscribe</h6>
+              </div>
+            </div>
+            <br>
+            <h6>Topic:</h6>
+            <input id="subscribeTopic" type="text" style="background-color:none;border:none;border-bottom: 1px solid black;
+                width:100%;margin-bottom: 10px;height:40px;" placeholder="Subscribe Topic">
+            <button id="btnSubscribe" class="btn-primary" type="button" name="subscribe">Subscribe</button>
+            <button id="btnUnsubscribe" class="btn-primary" type="button" name="unsubscribe">Unsubscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="overflow-y" style="background-color:azure;overflow-y: scroll;height:695px;">
+          <div class="row">
+            <div class="col-md-12" style="background-color:steelblue">
+              <h6 style="color:white;">&nbsp;&nbsp;&nbsp;Incoming messages</h6>
+            </div>
+          </div>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Topic</th>
+                <th scope="col">Payload</th>
+                <th scope="col">Time Stamp</th>
+              </tr>
+            </thead>
+            <tbody id='tablebody'>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 <script src="scripts/browserMqtt.js"></script>
 <script src="scripts/controller.js"></script>
+
 </html>
