@@ -31,9 +31,7 @@ connect.addEventListener('click', function (prevent) {
   });
 
   client.on("message", function (topic, payload) {
-    console.log([topic, payload].join(": "));
-    var timeStamp = new Date();
-    console.log(timeStamp);
+    var timeStamp = new Date()
     var tableBody = document.getElementById('tablebody');
     var tr = document.createElement('tr');
     var MessageTopic = document.createElement('td');
