@@ -38,7 +38,7 @@ connect.addEventListener('click', function (prevent) {
     var MessageTopic = document.createElement('td');
     var MessagePayload = document.createElement('td');
     var MessageTimeStamp = document.createElement('td');
-    MessageTopic.appendChild(document.createTextNode(subscribe.value));
+    MessageTopic.appendChild(document.createTextNode(topic.split('/')[1]));
     MessagePayload.appendChild(document.createTextNode(payload));
     MessageTimeStamp.appendChild(document.createTextNode(timeStamp));
     tr.appendChild(MessageTopic);
